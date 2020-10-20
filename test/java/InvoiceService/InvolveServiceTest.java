@@ -30,9 +30,10 @@ public class InvolveServiceTest {
 	}
 
 	@Test
-	public void givenMultipleRidesReturnAggregateTotalFare() {
+	public void givenMultipleRidesShouldReturnInvoiceSummary() {
 		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
-		double totalFare = invoiceGenerator.calculateFare(rides);
-		Assert.assertEquals(30, totalFare, 0.0);
+		InvoiceSummary invoiceSummary = invoiceGenerator.calculateFare(rides);
+		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+		Assert.assertEquals(expectedInvoiceSummary, invoiceSummary);
 	}
 }
